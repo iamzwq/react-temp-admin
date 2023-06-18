@@ -3,7 +3,7 @@ import { Button, Checkbox, Form, Input } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import styles from './index.module.scss'
 
-const login = () => {
+const Login = () => {
   const navigate = useNavigate()
 
   const onFinish = (values: any) => {
@@ -53,4 +53,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

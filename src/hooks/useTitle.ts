@@ -8,5 +8,6 @@ export const useTitle = (title: string) => {
     return () => {
       document.title = prevTitleRef.current
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title])
 }

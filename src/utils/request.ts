@@ -8,6 +8,21 @@ import type {
 } from 'axios'
 import { useUserInfoStore } from '~/stores'
 
+// 扩展axios接口
+declare module 'axios' {
+  interface AxiosRequestConfig {
+    successCode?: number
+  }
+}
+
+interface ApiResult<T = any> {
+  code: number
+  data: T
+  message: string
+}
+
+const SUCCESS_CODE = 1000
+
 class Request {
   private instance: AxiosInstance
   // 存放取消请求控制器Map
@@ -22,7 +37,7 @@ class Request {
     this.instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
       if (config.url !== '/login') {
         const token = useUserInfoStore.getState().userInfo?.token
-        if (token) config.headers!['x-token'] = token
+        if (token) config.headers['x-token'] = token
       }
 
       const controller = new AbortController()
@@ -39,7 +54,8 @@ class Request {
         const url = response.config.url || ''
         this.abortControllerMap.delete(url)
 
-        if (response.data.code !== 1000) {
+        const successCode = response.config.successCode || SUCCESS_CODE
+        if (response.data.code !== successCode) {
           return Promise.reject(response.data)
         }
 
@@ -73,15 +89,15 @@ class Request {
     }
   }
 
-  request<T>(config: AxiosRequestConfig): Promise<T> {
+  request<T = any>(config: AxiosRequestConfig): Promise<ApiResult<T>> {
     return this.instance.request(config)
   }
 
-  get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  get<T = any>(url: string, config?: AxiosRequestConfig): Promise<ApiResult<T>> {
     return this.instance.get(url, config)
   }
 
-  post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<ApiResult<T>> {
     return this.instance.post(url, data, config)
   }
 }

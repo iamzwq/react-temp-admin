@@ -4,7 +4,6 @@ import { HomeFilled, ShoppingFilled, MenuUnfoldOutlined, MenuFoldOutlined } from
 import { Button, Layout, Menu, Row, Col, Typography } from 'antd'
 import type { MenuProps } from 'antd'
 import HeaderRight from '../HeaderRight'
-import SvgIcon from '../SvgIcon'
 
 const { Header, Sider, Content } = Layout
 
@@ -17,6 +16,11 @@ const items: MenuProps['items'] = [
   {
     label: 'about',
     path: '/about',
+    icon: ShoppingFilled,
+  },
+  {
+    label: 'hot news',
+    path: '/hotnews',
     icon: ShoppingFilled,
   },
 ].map((nav) => ({
@@ -78,7 +82,7 @@ const BasicLayout = () => {
             </Col>
           </Row>
         </Header>
-        <Content style={{ padding: '16px', flex: 1, overflowY: 'auto' }}>
+        <Content style={{ padding: '16px', flex: 1, overflowY: 'auto', background: '#fff' }}>
           <Outlet />
         </Content>
       </Layout>

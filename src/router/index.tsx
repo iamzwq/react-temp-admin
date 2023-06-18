@@ -6,11 +6,6 @@ import lazyLoad from './lazyLoad'
 import Layout from '~/components/Layout'
 import ErrorBoundary from '~/components/ErrorBoundary'
 
-/* eslint-disable */
-const Login = lazy(() => import('~/pages/Login'))
-const Home = lazy(() => import('~/pages/Home'))
-const About = lazy(() => import('~/pages/About'))
-
 const authLoader = () => {
   const token = useUserInfoStore.getState().userInfo?.token
 
@@ -24,7 +19,7 @@ const authLoader = () => {
 const routes: RouteObject[] = [
   {
     path: '/login',
-    element: lazyLoad(Login),
+    element: lazyLoad(lazy(() => import('~/pages/Login'))),
   },
   {
     path: '/',
@@ -39,11 +34,15 @@ const routes: RouteObject[] = [
       {
         path: 'home',
         loader: () => ({ isAuth: false, ac: 'ac' }),
-        element: lazyLoad(Home),
+        element: lazyLoad(lazy(() => import('~/pages/Home'))),
       },
       {
         path: 'about',
-        element: lazyLoad(About),
+        element: lazyLoad(lazy(() => import('~/pages/About'))),
+      },
+      {
+        path: 'hotnews',
+        element: lazyLoad(lazy(() => import('~/pages/HotNews'))),
       },
     ],
   },

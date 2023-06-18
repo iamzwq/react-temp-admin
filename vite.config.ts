@@ -10,4 +10,12 @@ export default defineConfig({
       '~': path.resolve(__dirname, 'src'),
     },
   },
+  server: {
+    proxy: {
+      '/new': {
+        target: 'http://www.ggapi.cn/api',
+        changeOrigin: true,
+      },
+    },
+  },
 })
