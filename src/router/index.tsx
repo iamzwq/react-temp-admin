@@ -15,10 +15,10 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate replace to="/landing-page" />,
+        element: <Navigate replace to="/landing" />,
       },
       {
-        path: "landing-page",
+        path: "landing",
         lazy: async () => ({
           Component: (await import("@/pages/landing")).default,
         }),
@@ -29,7 +29,33 @@ const routes: RouteObject[] = [
           Component: (await import("@/pages/user-management")).default,
         }),
       },
+      {
+        path: "nav",
+        lazy: async () => ({
+          Component: (await import("@/pages/nav")).default,
+        }),
+        children: [
+          {
+            path: "sub-1",
+            lazy: async () => ({
+              Component: (await import("@/pages/nav/sub-nav-1")).default,
+            }),
+          },
+          {
+            path: "sub-2",
+            lazy: async () => ({
+              Component: (await import("@/pages/nav/sub-nav-2")).default,
+            }),
+          },
+        ],
+      },
     ],
+  },
+  {
+    path: "*",
+    lazy: async () => ({
+      Component: (await import("@/pages/not-found")).default,
+    }),
   },
 ];
 

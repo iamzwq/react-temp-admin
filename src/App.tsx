@@ -34,6 +34,8 @@ export default function App() {
             Menu: {
               itemBg: "var(--layout-sider-bg)",
               darkItemBg: "var(--layout-sider-bg)",
+              subMenuItemBg: "var(--layout-sider-bg)",
+              darkSubMenuItemBg: "var(--layout-sider-bg)",
             },
           },
         }}

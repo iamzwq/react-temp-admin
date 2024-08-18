@@ -12,7 +12,7 @@ export default function Login() {
           <ReactIcon className="size-20" />
         </div>
         <div className="w-3/5 flex justify-center items-center">
-          <Button type="primary" onClick={() => navigate("/landing-page")}>
+          <Button type="primary" onClick={() => navigate("/landing")}>
             登录
           </Button>
         </div>

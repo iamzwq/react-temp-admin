@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { HomeOutlined, UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
 import { Layout, Menu, type MenuProps } from "antd";
 import { useTheme } from "@/components/theme-provider";
@@ -6,11 +7,35 @@ import { useSettingsStore } from "@/stores/settings";
 
 import ReactIcon from "@/assets/react.svg?react";
 
+// 递归函数，找到匹配的菜单项
+const findSelectedKeys = (items: MenuProps["items"], pathname: string, path: string[] = []) => {
+  const selectedKeys: string[] = [];
+  let openKeys: string[] = [];
+
+  const travel = (items: MenuProps["items"], pathname: string, path: string[]) => {
+    for (const item of items!) {
+      if (item!.key === pathname) {
+        selectedKeys.push(item!.key);
+        openKeys = [...path];
+        return;
+      }
+      if ((item as any).children) {
+        path.push(item!.key as string);
+        travel((item as any).children, pathname, path);
+        path.pop();
+      }
+    }
+  };
+
+  travel(items, pathname, path);
+  return { selectedKeys, openKeys };
+};
+
 const items: MenuProps["items"] = [
   {
     icon: <HomeOutlined />,
-    label: <Link to="/landing-page">首页</Link>,
-    key: "/landing-page",
+    label: <Link to="/landing">首页</Link>,
+    key: "/landing",
   },
   {
     icon: <UserOutlined />,
@@ -19,15 +44,45 @@ const items: MenuProps["items"] = [
   },
   {
     icon: <VideoCameraOutlined />,
-    label: "视频",
-    key: "/video",
+    label: "一级菜单",
+    key: "/nav",
+    children: [
+      {
+        key: "/nav/sub-1",
+        label: <Link to="/nav/sub-1">二级菜单-1</Link>,
+      },
+      {
+        key: "/nav/sub-2",
+        label: <Link to="/nav/sub-2">二级菜单-2</Link>,
+      },
+    ],
   },
 ];
 
 export default function Sider() {
+  const location = useLocation();
+
+  const firstRenderRef = useRef(true);
+
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+  const [openKeys, setOpenKeys] = useState<string[]>([]);
+
   const collapsed = useSettingsStore((state) => state.collapsed);
 
   const { isDark } = useTheme();
+
+  useEffect(() => {
+    if (location.pathname === "/") return;
+
+    // 首次渲染时，设置默认值
+    if (firstRenderRef.current) {
+      const { selectedKeys, openKeys } = findSelectedKeys(items, location.pathname);
+      setSelectedKeys(selectedKeys);
+      setOpenKeys(openKeys);
+    }
+    // 将首次渲染标记设置为false
+    firstRenderRef.current = false;
+  }, [location.pathname]);
 
   return (
     <Layout.Sider
@@ -43,7 +98,16 @@ export default function Sider() {
         <ReactIcon className="size-6" />
         {collapsed ? null : "React Admin"}
       </Link>
-      <Menu theme={isDark ? "dark" : "light"} mode="inline" items={items} className="!border-e-0" />
+      <Menu
+        theme={isDark ? "dark" : "light"}
+        mode="inline"
+        items={items}
+        selectedKeys={selectedKeys}
+        onSelect={({ selectedKeys }) => setSelectedKeys(selectedKeys)}
+        openKeys={openKeys}
+        onOpenChange={(openKeys) => setOpenKeys(openKeys)}
+        className="!border-e-0"
+      />
     </Layout.Sider>
   );
 }
