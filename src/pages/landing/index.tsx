@@ -1,5 +1,6 @@
 import { Button, ColorPicker, DatePicker, Flex, Typography } from "antd";
 import { useSettingsStore } from "@/stores/settings";
+import { message } from "@/utils";
 
 const { RangePicker } = DatePicker;
 
@@ -10,7 +11,7 @@ export default function LandingPage() {
   return (
     <>
       <Typography.Title level={4}>Landing Page</Typography.Title>
-      <Flex gap={16}>
+      <Flex gap={16} wrap>
         <Button type="primary">primary</Button>
         <Button>default</Button>
         <RangePicker />
@@ -21,6 +22,9 @@ export default function LandingPage() {
             setColorPrimary(color.toHex());
           }}
         />
+        <Button type="primary" onClick={() => message.success("show message success!")}>
+          show message
+        </Button>
       </Flex>
     </>
   );

@@ -1,5 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import { App as AntdApp, ConfigProvider, theme as antdTheme } from "antd";
+import StaticAntd from "./components/static-antd";
 import { ThemeProvider, useTheme } from "./components/theme-provider";
 import { useSettingsStore } from "./stores/settings";
 import { router } from "./router";
@@ -37,11 +38,16 @@ export default function App() {
               subMenuItemBg: "var(--layout-sider-bg)",
               darkSubMenuItemBg: "var(--layout-sider-bg)",
             },
+            Message: {
+              contentBg: "var(--message-content-bg)",
+              colorText: "var(--message-content-color)",
+            },
           },
         }}
         componentSize="large"
       >
         <AntdApp>
+          <StaticAntd />
           <RouterProvider router={router} fallbackElement={<div>Loading...</div>} />
         </AntdApp>
       </ConfigProvider>

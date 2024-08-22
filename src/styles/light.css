@@ -2,4 +2,6 @@
   --layout-header-height: 64px;
   --layout-header-bg: #f4f4f4;
   --layout-sider-bg: #f4f4f4;
+  --message-content-bg: #fff;
+  --message-content-color: rgba(0, 0, 0, 0.88);
 }
