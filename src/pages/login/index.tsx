@@ -10,7 +10,7 @@ export default function Login() {
   return (
     <>
       <Helmet>
-        <title>登录页 | xx系统</title>
+        <title>登录页 | {import.meta.env.VITE_APP_TITLE}</title>
       </Helmet>
       <Layout className="min-h-screen">
         <Layout.Content className="flex">

@@ -5,7 +5,7 @@ export default function NavLayout() {
   return (
     <>
       <Helmet>
-        <title>导航页 | xx系统</title>
+        <title>导航页 | {import.meta.env.VITE_APP_TITLE}</title>
       </Helmet>
       <div className="text-indigo-700">
         Nav Layout

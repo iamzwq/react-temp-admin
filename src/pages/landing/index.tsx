@@ -12,7 +12,7 @@ export default function LandingPage() {
   return (
     <>
       <Helmet>
-        <title>首页 | xx系统</title>
+        <title>首页 | {import.meta.env.VITE_APP_TITLE}</title>
       </Helmet>
       <Typography.Title level={4}>Landing Page</Typography.Title>
       <Flex gap={16} wrap>
