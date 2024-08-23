@@ -32,7 +32,7 @@ export default defineConfig({
         assetFileNames: "[ext]/[name]-[hash].[ext]",
         manualChunks: {
           react: ["react", "react-dom", "react-router-dom", "zustand"],
-          antd: ["antd"],
+          antd: ["antd", "dayjs"],
         },
       },
     },

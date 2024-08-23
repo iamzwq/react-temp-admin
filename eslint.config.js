@@ -1,15 +1,15 @@
 import js from "@eslint/js";
-import globals from "globals";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 export default tseslint.config({
   extends: [js.configs.recommended, ...tseslint.configs.recommended, eslintPluginPrettierRecommended],
   files: ["**/*.{ts,tsx}"],
-  ignores: ["dist", "node_modules"],
+  ignores: ["dist", "node_modules", ".vscode", ".husky"],
   languageOptions: {
     ecmaVersion: 2020,
     globals: globals.browser,
@@ -24,8 +24,9 @@ export default tseslint.config({
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "no-console": ["warn", { allow: ["warn", "error"] }],
-    "no-debugger": "warn",
+    "no-multiple-empty-lines": ["error", { max: 1 }], // 禁止多个空行
+    "no-console": process.env.NODE_ENV === "production" ? "error" : "warn",
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "warn",
     "simple-import-sort/exports": "error",
     "simple-import-sort/imports": [
       "error",

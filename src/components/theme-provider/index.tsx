@@ -15,7 +15,7 @@ type ThemeProviderState = {
 };
 
 const initialState: ThemeProviderState = {
-  isDark: window.matchMedia("(prefers-color-scheme: dark").matches,
+  isDark: false,
   theme: "system",
   setTheme: () => null,
 };

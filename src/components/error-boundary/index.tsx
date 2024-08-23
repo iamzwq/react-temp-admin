@@ -30,7 +30,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
     //   在 App 中
     // 打印错误信息
     // 或者将错误日志上报给服务器
-    console.error(error, info);
+    console.error(error, info); // eslint-disable-line no-console
     // logErrorToMyService(error, info.componentStack);
   }
 

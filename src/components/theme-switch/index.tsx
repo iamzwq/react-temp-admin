@@ -37,7 +37,13 @@ export default function ThemeSwitch() {
 
   return (
     <Dropdown menu={{ items }} trigger={["click"]} className="p-2">
-      {theme === "dark" ? <MoonOutlined className="text-xl" /> : <SunOutlined className="text-xl p-2" />}
+      {theme === "dark" ? (
+        <MoonOutlined className="text-xl" />
+      ) : theme === "light" ? (
+        <SunOutlined className="text-xl p-2" />
+      ) : (
+        <DesktopOutlined className="text-xl" />
+      )}
     </Dropdown>
   );
 }

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Button, ColorPicker, DatePicker, Flex, Typography } from "antd";
 import { useSettingsStore } from "@/stores/settings";
 import { message } from "@/utils";
@@ -10,6 +11,9 @@ export default function LandingPage() {
 
   return (
     <>
+      <Helmet>
+        <title>首页 | xx系统</title>
+      </Helmet>
       <Typography.Title level={4}>Landing Page</Typography.Title>
       <Flex gap={16} wrap>
         <Button type="primary">primary</Button>
