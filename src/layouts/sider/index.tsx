@@ -5,7 +5,7 @@ import { Layout, Menu, type MenuProps } from "antd";
 import { useTheme } from "@/components/theme-provider";
 import { useSettingsStore } from "@/stores/settings";
 
-import ReactIcon from "@/assets/react.svg?react";
+import ReactIcon from "@/assets/svg/react.svg?react";
 
 // 递归函数，找到匹配的菜单项
 const findSelectedKeys = (items: MenuProps["items"], pathname: string, path: string[] = []) => {

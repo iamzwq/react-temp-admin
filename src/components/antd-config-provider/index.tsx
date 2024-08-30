@@ -26,6 +26,7 @@ export function AntdConfigProvider({ children }: PropsWithChildren) {
             headerBg: "var(--layout-header-bg)",
             headerHeight: "var(--layout-header-height)",
             siderBg: "var(--layout-sider-bg)",
+            bodyBg: "var(--layout-color-bg-body)",
           },
           Menu: {
             itemBg: "var(--layout-sider-bg)",

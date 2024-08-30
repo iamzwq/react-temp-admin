@@ -2,7 +2,7 @@ import { DesktopOutlined, MoonOutlined, SunOutlined } from "@ant-design/icons";
 import { Dropdown, type MenuProps } from "antd";
 import { useTheme } from "../theme-provider";
 
-export default function ThemeSwitch() {
+export function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
 
   const items: MenuProps["items"] = [

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Flex, Layout } from "antd";
-import ThemeSwitch from "@/components/theme-switch";
+import { ThemeSwitch } from "@/components/theme-switch";
 import Content from "./content";
 import Sider from "./sider";
 import { useSettingsStore } from "@/stores/settings";
