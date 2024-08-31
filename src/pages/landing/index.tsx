@@ -17,7 +17,6 @@ export default function LandingPage() {
       <Typography.Title level={4}>Landing Page</Typography.Title>
       <Flex gap={16} wrap>
         <Button type="primary">primary</Button>
-        <Button>default</Button>
         <RangePicker />
         <ColorPicker
           showText

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { HomeOutlined, UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
+import { HomeOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, type MenuProps } from "antd";
 import { useTheme } from "@/components/theme-provider";
 import { useSettingsStore } from "@/stores/settings";
@@ -43,7 +43,7 @@ const items: MenuProps["items"] = [
     key: "/user-management",
   },
   {
-    icon: <VideoCameraOutlined />,
+    icon: <MenuOutlined />,
     label: "一级菜单",
     key: "/nav",
     children: [

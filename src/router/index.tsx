@@ -1,5 +1,9 @@
 import { createBrowserRouter, Navigate, type RouteObject } from "react-router-dom";
 
+import { landingRoute } from "@/pages/landing/routes";
+import { navRoute } from "@/pages/nav/routes";
+import { userManagerRoute } from "@/pages/user-management/routes";
+
 const routes: RouteObject[] = [
   {
     path: "login",
@@ -17,38 +21,9 @@ const routes: RouteObject[] = [
         index: true,
         element: <Navigate replace to="/landing" />,
       },
-      {
-        path: "landing",
-        lazy: async () => ({
-          Component: (await import("@/pages/landing")).default,
-        }),
-      },
-      {
-        path: "user-management",
-        lazy: async () => ({
-          Component: (await import("@/pages/user-management")).default,
-        }),
-      },
-      {
-        path: "nav",
-        lazy: async () => ({
-          Component: (await import("@/pages/nav")).default,
-        }),
-        children: [
-          {
-            path: "sub-1",
-            lazy: async () => ({
-              Component: (await import("@/pages/nav/sub-nav-1")).default,
-            }),
-          },
-          {
-            path: "sub-2",
-            lazy: async () => ({
-              Component: (await import("@/pages/nav/sub-nav-2")).default,
-            }),
-          },
-        ],
-      },
+      landingRoute,
+      userManagerRoute,
+      navRoute,
     ],
   },
   {
