@@ -20,11 +20,11 @@ export default function Avatar() {
   ];
 
   return (
-    <Dropdown menu={{ items }} trigger={["click", "hover"]}>
+    <Dropdown menu={{ items }} trigger={["click"]}>
       <AntdAvatar
-        style={{ backgroundColor: "#87d068" }}
         size={36}
         src="https://api.dicebear.com/7.x/miniavs/svg?seed=1"
+        className="cursor-pointer"
       />
     </Dropdown>
   );

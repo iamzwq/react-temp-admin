@@ -92,7 +92,7 @@ export default function Sider() {
       className="h-screen overflow-auto fixed top-0 left-0 bottom-0 dark:text-white"
     >
       <Link
-        className="font-bold text-2xl hover:text-current h-[var(--layout-header-height)] flex justify-center items-center gap-2"
+        className="font-bold text-2xl hover:text-current h-[var(--layout-header-height)] flex justify-center items-center gap-2 text-nowrap"
         to="/"
       >
         <ReactIcon className="size-6" />
