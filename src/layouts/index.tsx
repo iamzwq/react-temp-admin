@@ -1,10 +1,10 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import { Button, Flex, Layout } from "antd";
 import { ThemeSwitch } from "@/components/theme-switch";
-import Avatar from "./components/Avatar";
-import Breadcrumb from "./components/Breadcrumb";
-import Content from "./components/Content";
-import Sider from "./components/Sider";
+import Breadcrumb from "./components/breadcrumb";
+import Content from "./components/content";
+import Sider from "./components/sider";
+import UserAvatar from "./components/user-avatar";
 import { useSettingsStore } from "@/stores/settings";
 
 export default function MainLayout() {
@@ -25,7 +25,7 @@ export default function MainLayout() {
           <Breadcrumb />
           <Flex gap={8} className="ml-auto items-center">
             <ThemeSwitch />
-            <Avatar />
+            <UserAvatar />
           </Flex>
         </Layout.Header>
         <Content />

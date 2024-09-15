@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { type FormInstance, Modal } from "antd";
 import type { Values } from "../types";
-import EditForm from "./EditForm";
+import EditForm from "./edit-form";
 
 type EditModalProps = {
   open: boolean;

@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Table, type TableProps } from "antd";
-import EditButton from "./components/EditButton";
+import EditButton from "./components/edit-button";
 import { useUserList } from "./api";
 
 interface DataType {

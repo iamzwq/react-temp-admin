@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "antd";
-import EditModal from "./EditModal";
+import EditModal from "./edit-modal";
 
 type EditButtonProps = {
   data: any;

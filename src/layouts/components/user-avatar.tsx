@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { LogoutOutlined } from "@ant-design/icons";
-import { Avatar as AntdAvatar, Dropdown, type MenuProps } from "antd";
+import { Avatar, Dropdown, type MenuProps } from "antd";
 
-export default function Avatar() {
+export default function UserAvatar() {
   const navigate = useNavigate();
 
   const items: MenuProps["items"] = [
@@ -21,11 +21,7 @@ export default function Avatar() {
 
   return (
     <Dropdown menu={{ items }} trigger={["click"]}>
-      <AntdAvatar
-        size={36}
-        src="https://api.dicebear.com/7.x/miniavs/svg?seed=1"
-        className="cursor-pointer"
-      />
+      <Avatar size={36} src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" className="cursor-pointer" />
     </Dropdown>
   );
 }

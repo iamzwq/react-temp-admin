@@ -2,8 +2,9 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ErrorBoundary } from "./components/error-boundary";
-import App from "./App";
+import App from "./app";
 
 import "./styles/index.css";
 import "./styles/light.css";
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")!).render(
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
           <App />
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </HelmetProvider>
     </ErrorBoundary>
