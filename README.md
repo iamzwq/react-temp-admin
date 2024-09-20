@@ -11,3 +11,12 @@
 - 进度条
 - 页面动画
 - 错误边界处理
+
+## 启动项目
+```bash
+git clone https://github.com/iamzwq/react-temp-admin.git
+
+npm install
+
+npm run dev
+```
