@@ -5,11 +5,10 @@ import Breadcrumb from "./components/breadcrumb";
 import Content from "./components/content";
 import Sider from "./components/sider";
 import UserAvatar from "./components/user-avatar";
-import { useSettingsStore } from "@/stores/settings";
+import { useSettingsState } from "@/stores/settings";
 
 export default function MainLayout() {
-  const collapsed = useSettingsStore((state) => state.collapsed);
-  const setCollapsed = useSettingsStore((state) => state.setCollapsed);
+  const { collapsed, setCollapsed } = useSettingsState();
 
   return (
     <Layout hasSider className="w-screen overflow-hidden">

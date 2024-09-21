@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import { ConfigProvider, theme as antdTheme } from "antd";
 import { useTheme } from "../theme-provider";
-import { useSettingsStore } from "@/stores/settings";
+import { useSettingsState } from "@/stores/settings";
 
 import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
@@ -9,7 +9,7 @@ import "dayjs/locale/zh-cn";
 export function AntdConfigProvider({ children }: PropsWithChildren) {
   const { theme } = useTheme();
   const { defaultAlgorithm, darkAlgorithm } = antdTheme;
-  const colorPrimary = useSettingsStore((state) => state.colorPrimary);
+  const { colorPrimary } = useSettingsState();
   return (
     <ConfigProvider
       locale={zhCN}

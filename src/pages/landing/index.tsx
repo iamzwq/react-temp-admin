@@ -1,13 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import { Button, ColorPicker, DatePicker, Flex, Typography } from "antd";
-import { useSettingsStore } from "@/stores/settings";
+import { useSettingsState } from "@/stores/settings";
 import { message } from "@/utils";
 
 const { RangePicker } = DatePicker;
 
 export default function LandingPage() {
-  const colorPrimary = useSettingsStore((state) => state.colorPrimary);
-  const setColorPrimary = useSettingsStore((state) => state.setColorPrimary);
+  const { colorPrimary, setColorPrimary } = useSettingsState();
 
   return (
     <>

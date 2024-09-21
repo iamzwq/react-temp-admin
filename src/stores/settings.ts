@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { useShallow } from "zustand/react/shallow";
 
 interface SettingsState {
   colorPrimary: string;
@@ -8,7 +9,7 @@ interface SettingsState {
   setCollapsed: (value: boolean) => void;
 }
 
-export const useSettingsStore = create<SettingsState>()(
+const useSettingsStore = create<SettingsState>()(
   persist(
     (set) => ({
       colorPrimary: "#1DA57A",
@@ -16,12 +17,16 @@ export const useSettingsStore = create<SettingsState>()(
       collapsed: false,
       setCollapsed: (collapsed) => set({ collapsed }),
     }),
-    {
-      name: "app-settings",
-      partialize: (state) =>
-        Object.fromEntries(
-          Object.entries(state).filter(([key]) => ["colorPrimary", "collapsed"].includes(key)),
-        ),
-    },
+    { name: "app-settings" },
   ),
 );
+
+export const useSettingsState = () =>
+  useSettingsStore(
+    useShallow((state) => ({
+      colorPrimary: state.colorPrimary,
+      setColorPrimary: state.setColorPrimary,
+      collapsed: state.collapsed,
+      setCollapsed: state.setCollapsed,
+    })),
+  );

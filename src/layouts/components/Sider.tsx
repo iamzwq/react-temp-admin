@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { HomeOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, type MenuProps } from "antd";
 import { useTheme } from "@/components/theme-provider";
-import { useSettingsStore } from "@/stores/settings";
+import { useSettingsState } from "@/stores/settings";
 
 import ReactIcon from "@/assets/svg/react.svg?react";
 
@@ -67,7 +67,7 @@ export default function Sider() {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
-  const collapsed = useSettingsStore((state) => state.collapsed);
+  const { collapsed } = useSettingsState();
 
   const { isDark } = useTheme();
 
