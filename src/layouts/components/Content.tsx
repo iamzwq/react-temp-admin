@@ -6,7 +6,7 @@ export default function Content() {
   const matches = useMatches();
   const currRouter = matches.at(-1);
   return (
-    <Layout.Content className="min-h-[calc(100vh-var(--layout-header-height))] p-4">
+    <Layout.Content className="min-h-[calc(100vh-64px)] p-4">
       <PageAnimate key={currRouter!.pathname}>
         <Outlet /> {/* Outlet是子路由的占位符 */}
       </PageAnimate>

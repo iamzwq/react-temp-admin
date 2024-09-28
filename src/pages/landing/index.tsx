@@ -1,13 +1,10 @@
 import { Helmet } from "react-helmet-async";
-import { Button, ColorPicker, DatePicker, Flex, Typography } from "antd";
-import { useSettingsState } from "@/stores/settings";
+import { Button, DatePicker, Flex, Typography } from "antd";
 import { message } from "@/utils";
 
 const { RangePicker } = DatePicker;
 
 export default function LandingPage() {
-  const { colorPrimary, setColorPrimary } = useSettingsState();
-
   return (
     <>
       <Helmet>
@@ -15,19 +12,12 @@ export default function LandingPage() {
       </Helmet>
       <Typography.Title level={4}>Landing Page</Typography.Title>
       <Flex gap={16} wrap>
-        <Button type="primary">primary</Button>
         <RangePicker />
-        <ColorPicker
-          showText
-          value={colorPrimary}
-          onChange={(color) => {
-            setColorPrimary(color.toHex());
-          }}
-        />
         <Button type="primary" onClick={() => message.success("show message success!")}>
           show message
         </Button>
       </Flex>
+      <div className="h-screen" />
     </>
   );
 }

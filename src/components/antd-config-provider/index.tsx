@@ -23,21 +23,12 @@ export function AntdConfigProvider({ children }: PropsWithChildren) {
         components: {
           Layout: {
             headerPadding: "0 24px",
-            headerBg: "var(--layout-header-bg)",
-            headerHeight: "var(--layout-header-height)",
-            siderBg: "var(--layout-sider-bg)",
-            bodyBg: "var(--layout-color-bg-body)",
+            // siderBg: "#141414",
           },
-          Menu: {
-            itemBg: "var(--layout-sider-bg)",
-            darkItemBg: "var(--layout-sider-bg)",
-            subMenuItemBg: "var(--layout-sider-bg)",
-            darkSubMenuItemBg: "var(--layout-sider-bg)",
-          },
-          Message: {
-            contentBg: "var(--message-content-bg)",
-            colorText: "var(--message-content-color)",
-          },
+          // Menu: {
+          //   darkItemBg: "#141414",
+          //   darkSubMenuItemBg: "#141414",
+          // },
         },
       }}
       componentSize="large"

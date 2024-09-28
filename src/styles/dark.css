@@ -1,7 +1,4 @@
 :root.dark {
-  --layout-header-bg: #262626;
-  --layout-sider-bg: #262626;
-  --message-content-bg: #404040;
-  --message-content-color: #ffffff;
-  --layout-color-bg-body: #141414;
+  --text-color: rgb(255, 255, 255, 0.65);
+  --text-hover-color: rgb(255, 255, 255);
 }

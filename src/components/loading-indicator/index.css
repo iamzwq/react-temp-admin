@@ -1,4 +1,4 @@
-@keyframes loadingAnimate {
+@keyframes loading-animate {
   17% {
     border-bottom-right-radius: 6px;
   }
@@ -17,7 +17,7 @@
   }
 }
 
-@keyframes loadingShadow {
+@keyframes loading-shadow {
   0%,
   100% {
     transform: scale(1, 1);

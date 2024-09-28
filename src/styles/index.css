@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(270deg, #185839, #c300ff, #8600ff, #0058c7, #0c6890, #185839);
+  background-size: 300% 300%;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-animation 3s linear infinite;
+}

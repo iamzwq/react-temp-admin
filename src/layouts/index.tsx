@@ -3,6 +3,7 @@ import { Button, Flex, Layout } from "antd";
 import { ThemeSwitch } from "@/components/theme-switch";
 import Breadcrumb from "./components/breadcrumb";
 import Content from "./components/content";
+import CustomSkin from "./components/custom-skin";
 import Sider from "./components/sider";
 import UserAvatar from "./components/user-avatar";
 import { useSettingsState } from "@/stores/settings";
@@ -11,18 +12,19 @@ export default function MainLayout() {
   const { collapsed, setCollapsed } = useSettingsState();
 
   return (
-    <Layout hasSider className="w-screen overflow-hidden">
+    <Layout>
       <Sider />
       <Layout>
-        <Layout.Header className="flex items-center dark:text-white sticky top-0 z-[999] border-b border-b-gray-200 dark:border-b-gray-700 pl-0">
+        <Layout.Header className="flex items-center sticky top-0 z-[999] pl-0 bg-white dark:bg-[#001529]">
           <Button
             type="text"
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             onClick={() => setCollapsed(!collapsed)}
-            className="text-inherit hover:text-inherit mr-2"
+            className="mr-2"
           />
           <Breadcrumb />
           <Flex gap={8} className="ml-auto items-center">
+            <CustomSkin />
             <ThemeSwitch />
             <UserAvatar />
           </Flex>
