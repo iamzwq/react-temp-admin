@@ -1,4 +1,4 @@
 :root {
-  --text-color: rgb(255, 255, 255, 0.65);
-  --text-hover-color: rgb(255, 255, 255);
+  --text-color: var(--white-65);
+  --text-hover-color: white;
 }
