@@ -6,10 +6,10 @@ import Content from "./components/content";
 import CustomSkin from "./components/custom-skin";
 import Sider from "./components/sider";
 import UserAvatar from "./components/user-avatar";
-import { useSettingsState } from "@/stores/settings";
+import { setCollapsed, useSettingsStore } from "@/stores/settings";
 
 export default function MainLayout() {
-  const { collapsed, setCollapsed } = useSettingsState();
+  const collapsed = useSettingsStore((state) => state.collapsed);
 
   return (
     <Layout>
@@ -23,7 +23,7 @@ export default function MainLayout() {
             className="mr-2"
           />
           <Breadcrumb />
-          <Flex gap={8} className="ml-auto items-center">
+          <Flex gap={12} className="ml-auto items-center">
             <CustomSkin />
             <ThemeSwitch />
             <UserAvatar />

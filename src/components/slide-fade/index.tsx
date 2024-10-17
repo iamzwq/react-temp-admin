@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-export function PageAnimate({ children }: PropsWithChildren) {
+export function SlideFade({ children }: PropsWithChildren) {
   return (
     <AnimatePresence mode="wait">
       <motion.div

@@ -2,31 +2,27 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { useShallow } from "zustand/react/shallow";
 
-interface SettingsState {
-  colorPrimary: string;
-  setColorPrimary: (value: string) => void;
-  collapsed: boolean;
-  setCollapsed: (value: boolean) => void;
-}
+const initialState = {
+  colorPrimary: "#1DA57A",
+  collapsed: false,
+};
 
-const useSettingsStore = create<SettingsState>()(
-  persist(
-    (set) => ({
-      colorPrimary: "#1DA57A",
-      setColorPrimary: (colorPrimary) => set({ colorPrimary }),
-      collapsed: false,
-      setCollapsed: (collapsed) => set({ collapsed }),
-    }),
-    { name: "app-settings" },
-  ),
+export const useSettingsStore = create<typeof initialState>()(
+  persist(() => initialState, { name: "app-settings" }),
 );
 
-export const useSettingsState = () =>
+export const useShallowSettingsStore = () =>
   useSettingsStore(
     useShallow((state) => ({
       colorPrimary: state.colorPrimary,
-      setColorPrimary: state.setColorPrimary,
       collapsed: state.collapsed,
-      setCollapsed: state.setCollapsed,
     })),
   );
+
+export function setColorPrimary(colorPrimary: string) {
+  useSettingsStore.setState({ colorPrimary });
+}
+
+export function setCollapsed(collapsed: boolean) {
+  useSettingsStore.setState({ collapsed });
+}

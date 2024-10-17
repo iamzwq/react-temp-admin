@@ -24,6 +24,7 @@ export default tseslint.config({
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-unsafe-function-type": "off",
     "no-multiple-empty-lines": ["error", { max: 1 }], // 禁止多个空行
     "no-console": process.env.NODE_ENV === "production" ? "error" : "warn",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "warn",

@@ -1,0 +1,19 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "css.customData": [".vscode/tailwind.json"],
+  "cSpell.words": [
+    "clsx",
+    "cssinjs",
+    "nprogress",
+    "partialize",
+    "sider",
+    "svgr",
+    "tailwindcss",
+    "tanstack",
+    "tseslint",
+    "zustand"
+  ]
+}

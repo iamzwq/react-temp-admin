@@ -9,13 +9,13 @@ type ThemeProviderProps = {
 };
 
 type ThemeProviderState = {
-  isDark: boolean;
+  isDarkMode: boolean;
   theme: Theme;
   setTheme: (theme: Theme) => void;
 };
 
 const initialState: ThemeProviderState = {
-  isDark: false,
+  isDarkMode: false,
   theme: "system",
   setTheme: () => null,
 };
@@ -31,7 +31,7 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
   );
-  const [isDark, setIsDark] = useState(() => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
     if (
       theme === "dark" ||
       (theme === "system" && window.matchMedia("(prefers-color-scheme: dark").matches)
@@ -49,16 +49,16 @@ export function ThemeProvider({
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       root.classList.add(systemTheme);
-      setIsDark(systemTheme === "dark");
+      setIsDarkMode(systemTheme === "dark");
       return;
     }
 
     root.classList.add(theme);
-    setIsDark(theme === "dark");
+    setIsDarkMode(theme === "dark");
   }, [theme]);
 
   const value = {
-    isDark,
+    isDarkMode,
     theme,
     setTheme: (theme: Theme) => {
       localStorage.setItem(storageKey, theme);

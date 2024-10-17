@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { HomeOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, type MenuProps } from "antd";
 import { useTheme } from "@/components/theme-provider";
-import { useSettingsState } from "@/stores/settings";
+import { useSettingsStore } from "@/stores/settings";
 
 import ReactIcon from "@/assets/svg/react.svg?react";
 
@@ -67,9 +67,9 @@ export default function Sider() {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
-  const { collapsed } = useSettingsState();
+  const collapsed = useSettingsStore((state) => state.collapsed);
 
-  const { isDark } = useTheme();
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
     if (location.pathname === "/") return;
@@ -89,7 +89,7 @@ export default function Sider() {
       trigger={null}
       collapsible
       collapsed={collapsed}
-      theme={isDark ? "dark" : "light"}
+      theme={isDarkMode ? "dark" : "light"}
       className="h-screen overflow-auto !sticky top-0 left-0 start-0"
     >
       <Link
@@ -100,7 +100,7 @@ export default function Sider() {
         {collapsed ? null : <span className="text-gradient">React Admin</span>}
       </Link>
       <Menu
-        theme={isDark ? "dark" : "light"}
+        theme={isDarkMode ? "dark" : "light"}
         mode="inline"
         items={items}
         selectedKeys={selectedKeys}

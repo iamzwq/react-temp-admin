@@ -10,11 +10,11 @@ export default function LandingPage() {
       <Helmet>
         <title>首页 | {import.meta.env.VITE_APP_TITLE}</title>
       </Helmet>
-      <Typography.Title level={4}>Landing Page</Typography.Title>
+      <Typography.Title level={4}>首页</Typography.Title>
       <Flex gap={16} wrap>
         <RangePicker />
         <Button type="primary" onClick={() => message.success("show message success!")}>
-          show message
+          message
         </Button>
       </Flex>
       <div className="h-screen" />

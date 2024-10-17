@@ -28,7 +28,7 @@ export default function Login() {
             >
               <Alert message="用户名：admin，密码：123456" type="info" showIcon className="mb-6" />
               <LoginForm />
-              <Divider>OR</Divider>
+              <Divider>其他登录方式</Divider>
               <ThirdPartyLogin />
             </Card>
           </div>

@@ -10,7 +10,7 @@ export default function UserAvatar() {
       key: "loginOut",
       label: (
         <>
-          <LogoutOutlined /> 退出登录
+          <LogoutOutlined className="mr-2" /> 退出登录
         </>
       ),
       onClick: () => {
