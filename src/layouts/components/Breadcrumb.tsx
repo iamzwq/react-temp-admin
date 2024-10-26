@@ -1,4 +1,4 @@
-import { useMatches } from "react-router-dom";
+import { Link, useMatches } from "react-router-dom";
 import { Breadcrumb as AntdBreadcrumb } from "antd";
 
 export default function Breadcrumb() {
@@ -9,5 +9,5 @@ export default function Breadcrumb() {
       title: (match.handle as any)?.crumb?.(),
     }));
 
-  return <AntdBreadcrumb items={items} />;
+  return <AntdBreadcrumb items={[{ title: <Link to="/landing">首页</Link> }, ...items]} />;
 }

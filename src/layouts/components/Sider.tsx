@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { HomeOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
+import { BarChartOutlined, HomeOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, type MenuProps } from "antd";
 import { useTheme } from "@/components/theme-provider";
 import { useSettingsStore } from "@/stores/settings";
@@ -57,6 +57,11 @@ const items: MenuProps["items"] = [
       },
     ],
   },
+  {
+    icon: <BarChartOutlined />,
+    label: <Link to="/echarts-demo">Echarts Demo</Link>,
+    key: "/echarts-demo",
+  },
 ];
 
 export default function Sider() {
@@ -74,10 +79,10 @@ export default function Sider() {
   useEffect(() => {
     if (location.pathname === "/") return;
 
+    const { selectedKeys, openKeys } = findSelectedKeys(items, location.pathname);
+    setSelectedKeys(selectedKeys);
     // 首次渲染时，设置默认值
     if (firstRenderRef.current) {
-      const { selectedKeys, openKeys } = findSelectedKeys(items, location.pathname);
-      setSelectedKeys(selectedKeys);
       setOpenKeys(openKeys);
     }
     // 将首次渲染标记设置为false
@@ -97,14 +102,14 @@ export default function Sider() {
         to="/"
       >
         <ReactIcon className="size-6" />
-        {collapsed ? null : <span className="text-gradient">React Admin</span>}
+        {collapsed ? null : <span className="text-gradient-ripple">React Admin</span>}
       </Link>
       <Menu
         theme={isDarkMode ? "dark" : "light"}
         mode="inline"
         items={items}
         selectedKeys={selectedKeys}
-        onSelect={({ selectedKeys }) => setSelectedKeys(selectedKeys)}
+        // onSelect={({ selectedKeys }) => setSelectedKeys(selectedKeys)}
         openKeys={openKeys}
         onOpenChange={(openKeys) => setOpenKeys(openKeys)}
         className="!border-e-0"

@@ -1,5 +1,6 @@
 import { createBrowserRouter, Navigate, type RouteObject } from "react-router-dom";
 
+import { echartsDemoRoute } from "@/pages/echarts-demo/routes";
 import { landingRoute } from "@/pages/landing/routes";
 import { navRoute } from "@/pages/nav/routes";
 import { userManagerRoute } from "@/pages/user-management/routes";
@@ -24,6 +25,7 @@ const routes: RouteObject[] = [
       landingRoute,
       userManagerRoute,
       navRoute,
+      echartsDemoRoute,
     ],
   },
   {
