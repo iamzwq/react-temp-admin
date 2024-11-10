@@ -15,57 +15,55 @@ export function debounce<T extends (...args: any[]) => any>(
   wait: number,
   options: Options = {},
 ): (...args: Parameters<T>) => void {
-  let timeout: ReturnType<typeof setTimeout> | null = null; // 用于存储定时器的引用
-  let lastArgs: Parameters<T> | null = null; // 存储最后一次传入的参数
-
-  // 配置防抖的默认选项
+  let timer: ReturnType<typeof setTimeout> | null = null;
+  let _args: Parameters<T> | null = null;
+  let _this: any = null;
   const { leading = false, trailing = true } = options;
 
-  // 用于执行函数的内部方法
-  const invokeFunc = () => {
-    if (lastArgs) {
-      func(...lastArgs);
-      lastArgs = null;
+  const invoke = () => {
+    if (_args !== null) {
+      func.apply(_this, _args);
+      _this = null;
+      _args = null;
     }
   };
 
-  // 开始新的定时器
-  const startTimer = () => {
-    timeout = setTimeout(() => {
+  const cancelTimer = () => {
+    if (timer !== null) {
+      clearTimeout(timer);
+      timer = null;
+    }
+  };
+
+  const cancel = () => {
+    cancelTimer();
+    _this = null;
+    _args = null;
+  };
+
+  const debounced = function (this: any, ...args: Parameters<T>) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    _this = this;
+    _args = args;
+    if (timer !== null) clearTimeout(timer);
+    if (leading && !timer) {
+      invoke(); // 立即执行第一次
+    }
+    timer = setTimeout(() => {
       if (trailing) {
-        invokeFunc();
+        invoke();
       }
+      cancel();
     }, wait);
   };
 
-  // 防抖处理的函数
-  const debounced = (...args: Parameters<T>) => {
-    lastArgs = args; // 存储当前的参数
-
-    if (timeout) {
-      clearTimeout(timeout);
-    }
-
-    if (leading && !timeout) {
-      invokeFunc(); // 立即执行第一次
-    }
-
-    startTimer(); // 设置新的定时器
-  };
-
   // 取消防抖
-  debounced.cancel = () => {
-    if (timeout) clearTimeout(timeout);
-    timeout = null;
-    lastArgs = null;
-  };
+  debounced.cancel = cancel;
 
   // 强制执行防抖函数
   debounced.flush = () => {
-    if (timeout) {
-      invokeFunc(); // 立即执行
-      debounced.cancel(); // 清理状态
-    }
+    cancelTimer();
+    invoke();
   };
 
   return debounced;
@@ -83,14 +81,12 @@ export function throttle<T extends (...args: any[]) => any>(
   wait: number,
   options: Options = {},
 ): (...args: Parameters<T>) => void {
-  let timeout: ReturnType<typeof setTimeout> | null = null; // 用于存储 setTimeout 的返回值，以便后续清除定时器
+  let timeout: ReturnType<typeof setTimeout> | null = null;
   let lastArgs: Parameters<T> | null = null; // 存储上一次调用时的参数
   let lastCallTime: number | null = null; // 记录上一次函数执行的时间
 
-  // 配置节流函数的行为，是否在开始和结束时执行
   const { leading = true, trailing = true } = options;
 
-  // 执行函数并重置定时器
   const invokeFunc = (time: number) => {
     func(...(lastArgs as Parameters<T>));
     lastCallTime = time;

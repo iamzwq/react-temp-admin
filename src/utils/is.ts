@@ -31,10 +31,10 @@ export function isString(value: any): value is string {
  * @example
  * isNumber(123); // true
  * isNumber("123"); // false
- * isNumber(NaN); // true
+ * isNumber(NaN); // false
  */
 export function isNumber(value: any): value is number {
-  return typeof value === "number";
+  return typeof value === "number" && !Number.isNaN(value);
 }
 
 /**
@@ -90,6 +90,18 @@ export function isObject(value: any): value is object {
 }
 
 /**
+ * 检查值是否为普通对象
+ * @param val 要检查的值
+ * @returns 如果值为普通对象返回 true，否则返回 false
+ * @example
+ * isPlainObject({}); // true
+ * isPlainObject(new Date()); // false
+ */
+export function isPlainObject(val: any): val is object {
+  return !!val && typeof val === "object" && val.constructor === Object;
+}
+
+/**
  * 检查值是否为空
  * 针对 nil、数组、字符串和对象进行检查
  * @param value 要检查的值
@@ -102,6 +114,8 @@ export function isObject(value: any): value is object {
  * isEmpty([1, 2]); // false
  * isEmpty("hello"); // false
  * isEmpty({ key: "value" }); // false
+ * 另一种写法
+ * const isEmpty = val => val === null || val === undefined || !Object.keys(val).length;
  */
 export function isEmpty(value: any): boolean {
   if (isNil(value)) {
@@ -130,4 +144,21 @@ export function isEmpty(value: any): boolean {
 export function isEmail(value: any): boolean {
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
   return isString(value) && emailRegex.test(value);
+}
+
+/**
+ * 检查值是否为有效的 JSON 字符串
+ * @param value 要检查的值
+ * @returns 如果值为有效的 JSON 字符串返回 true，否则返回 false
+ * @example
+ * isValidJSON('{"key": "value"}'); // true
+ * isValidJSON('invalid json'); // false
+ */
+export function isValidJSON(value: any): boolean {
+  try {
+    JSON.parse(value);
+    return true;
+  } catch {
+    return false;
+  }
 }

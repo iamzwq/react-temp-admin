@@ -22,8 +22,7 @@ export function convertUTCToLocal(
   withAbbr = true,
   timeZone?: string,
 ) {
-  // 将UTC时间转换为指定时区的时间，timeZone不传时，则默认为浏览器的本地时区
-  // 或者使用 dayjs.tz.guess()显式地传递时区
+  // 将UTC时间转换为指定时区的时间，timeZone不传时，则默认为浏览器的本地时区，或者使用 dayjs.tz.guess()显式地传递时区
   // timeZone = timeZone || dayjs.tz.guess();
   const localTime = dayjs.utc(utcTime).tz(timeZone);
 
@@ -32,11 +31,8 @@ export function convertUTCToLocal(
     return localTime.format(format);
   }
 
-  // 获取时区缩写
-  const timeZoneAbbr = localTime.format("z");
-
   // 格式化时间并拼接时区缩写
-  return `${localTime.format(format)} ${timeZoneAbbr}`;
+  return `${localTime.format(format)} ${localTime.format("z")}`;
 }
 
 /**
