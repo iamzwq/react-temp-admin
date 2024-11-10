@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { Button, DatePicker, Flex, Typography } from "antd";
-import { message } from "@/utils";
 
 const { RangePicker } = DatePicker;
 
@@ -13,7 +12,7 @@ export default function LandingPage() {
       <Typography.Title level={4}>首页</Typography.Title>
       <Flex gap={16} wrap>
         <RangePicker />
-        <Button type="primary" onClick={() => message.success("show message success!")}>
+        <Button type="primary" onClick={() => window.$message?.success("show message success!")}>
           message
         </Button>
       </Flex>
