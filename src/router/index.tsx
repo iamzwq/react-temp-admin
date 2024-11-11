@@ -1,9 +1,8 @@
 import { createBrowserRouter, Navigate, type RouteObject } from "react-router-dom";
-
-import { echartsDemoRoute } from "@/pages/echarts-demo/routes";
-import { landingRoute } from "@/pages/landing/routes";
-import { navRoute } from "@/pages/nav/routes";
-import { userManagerRoute } from "@/pages/user-management/routes";
+import { echartsDemoRoute } from "./modules/echarts-demo";
+import { landingRoute } from "./modules/landing";
+import { navRoute } from "./modules/nav";
+import { userManagerRoute } from "./modules/user-management";
 
 const routes: RouteObject[] = [
   {

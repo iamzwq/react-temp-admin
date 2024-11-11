@@ -1,3 +1,3 @@
+export * from "./modules/settings";
+export * from "./modules/test";
 export * from "./selectors";
-export * from "./settings";
-export * from "./test";

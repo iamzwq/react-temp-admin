@@ -3,7 +3,7 @@ import { Link, type RouteObject } from "react-router-dom";
 export const navRoute: RouteObject = {
   path: "nav",
   lazy: async () => ({
-    Component: (await import("./index")).default,
+    Component: (await import("@/pages/nav")).default,
   }),
   handle: {
     crumb: () => "一级菜单",
@@ -12,7 +12,7 @@ export const navRoute: RouteObject = {
     {
       path: "sub-1",
       lazy: async () => ({
-        Component: (await import("./sub-nav-1")).default,
+        Component: (await import("@/pages/nav/sub-nav-1")).default,
       }),
       handle: {
         crumb: () => <Link to="/nav/sub-1">二级菜单-1</Link>,
@@ -21,7 +21,7 @@ export const navRoute: RouteObject = {
     {
       path: "sub-2",
       lazy: async () => ({
-        Component: (await import("./sub-nav-2")).default,
+        Component: (await import("@/pages/nav/sub-nav-2")).default,
       }),
       handle: {
         crumb: () => <Link to="/nav/sub-2">二级菜单-2</Link>,
