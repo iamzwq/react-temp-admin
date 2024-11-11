@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build --base=/react-temp-admin",
+    "build": "tsc -b && rm -f tsconfig.app.tsbuildinfo tsconfig.node.tsbuildinfo && vite build --base=/react-temp-admin",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write '**/*.{js,ts,jsx,tsx}'",
