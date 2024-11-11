@@ -6,10 +6,10 @@ import Content from "./components/content";
 import CustomSkin from "./components/custom-skin";
 import Sider from "./components/sider";
 import UserAvatar from "./components/user-avatar";
-import { setCollapsed, useSettingsStore } from "@/stores/settings";
+import { setCollapsed, useSelector, useSettingsStore } from "@/stores";
 
 export default function MainLayout() {
-  const collapsed = useSettingsStore((state) => state.collapsed);
+  const { collapsed } = useSettingsStore(useSelector(["collapsed"]));
 
   return (
     <Layout>

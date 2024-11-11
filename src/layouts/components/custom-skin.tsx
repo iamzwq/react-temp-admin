@@ -1,9 +1,9 @@
 import { SkinOutlined } from "@ant-design/icons";
 import { ColorPicker } from "antd";
-import { setColorPrimary, useSettingsStore } from "@/stores/settings";
+import { setColorPrimary, useSelector, useSettingsStore } from "@/stores";
 
 export default function CustomSkin() {
-  const colorPrimary = useSettingsStore((state) => state.colorPrimary);
+  const { colorPrimary } = useSettingsStore(useSelector(["colorPrimary"]));
   return (
     <ColorPicker
       showText

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, type FormProps, Input } from "antd";
 import { useLogin } from "../api";
-import { notification } from "@/utils";
 
 type FieldType = {
   username?: string;
@@ -19,7 +18,7 @@ export default function LoginForm() {
     onLogin(values);
     navigate("/landing");
     setTimeout(() => {
-      notification.success({
+      window.$notification?.success({
         message: "登录成功",
         description: "欢迎回来",
       });

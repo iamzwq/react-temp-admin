@@ -2,7 +2,7 @@ import type { PropsWithChildren } from "react";
 import { legacyLogicalPropertiesTransformer, StyleProvider } from "@ant-design/cssinjs";
 import { ConfigProvider, theme as antdTheme } from "antd";
 import { useTheme } from "../theme-provider";
-import { useSettingsStore } from "@/stores/settings";
+import { useSelector, useSettingsStore } from "@/stores";
 
 import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
@@ -10,7 +10,7 @@ import "dayjs/locale/zh-cn";
 export function AntdConfigProvider({ children }: PropsWithChildren) {
   const { isDarkMode } = useTheme();
   const { defaultAlgorithm, darkAlgorithm } = antdTheme;
-  const colorPrimary = useSettingsStore((state) => state.colorPrimary);
+  const { colorPrimary } = useSettingsStore(useSelector(["colorPrimary"]));
   return (
     <StyleProvider hashPriority="high" transformers={[legacyLogicalPropertiesTransformer]}>
       <ConfigProvider
