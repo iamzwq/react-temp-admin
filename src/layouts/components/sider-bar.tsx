@@ -45,15 +45,15 @@ const items: MenuProps["items"] = [
   {
     icon: <MenuOutlined />,
     label: "一级菜单",
-    key: "/nav",
+    key: "/nest-menu",
     children: [
       {
-        key: "/nav/sub-1",
-        label: <Link to="/nav/sub-1">二级菜单-1</Link>,
+        key: "/nest-menu/sub-menu-1",
+        label: <Link to="/nest-menu/sub-menu-1">二级菜单-1</Link>,
       },
       {
-        key: "/nav/sub-2",
-        label: <Link to="/nav/sub-2">二级菜单-2</Link>,
+        key: "/nest-menu/sub-menu-2",
+        label: <Link to="/nest-menu/sub-menu-2">二级菜单-2</Link>,
       },
     ],
   },
@@ -64,7 +64,7 @@ const items: MenuProps["items"] = [
   },
 ];
 
-export default function Sider() {
+export default function SiderBar() {
   const location = useLocation();
 
   const firstRenderRef = useRef(true);

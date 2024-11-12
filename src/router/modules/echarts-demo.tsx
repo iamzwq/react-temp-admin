@@ -6,6 +6,7 @@ export const echartsDemoRoute: RouteObject = {
     Component: (await import("@/pages/echarts-demo/layout")).default,
   }),
   handle: {
+    title: "Echarts Demo",
     crumb: () => <Link to="/echarts-demo">Echarts Demo</Link>,
   },
 };

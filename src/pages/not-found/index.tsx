@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <>
       <Helmet>
-        <title>404 | {import.meta.env.VITE_APP_TITLE}</title>
+        <title>404 | {import.meta.env.VITE_APP_TITLE_SUFFIX}</title>
       </Helmet>
       <Result
         status="404"

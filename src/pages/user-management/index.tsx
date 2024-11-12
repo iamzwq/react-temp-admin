@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { Table, type TableProps } from "antd";
 import EditButton from "./components/edit-button";
 import { useUserList } from "./api";
@@ -51,12 +50,5 @@ const columns: TableProps<DataType>["columns"] = [
 export default function UserManagement() {
   const { data, isFetching } = useUserList();
 
-  return (
-    <>
-      <Helmet>
-        <title>用户管理 | {import.meta.env.VITE_APP_TITLE}</title>
-      </Helmet>
-      <Table columns={columns} dataSource={data} loading={isFetching} pagination={false} rowKey="id" />
-    </>
-  );
+  return <Table columns={columns} dataSource={data} loading={isFetching} pagination={false} rowKey="id" />;
 }

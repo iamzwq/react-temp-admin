@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate, type RouteObject } from "react-router-dom";
 import { echartsDemoRoute } from "./modules/echarts-demo";
 import { landingRoute } from "./modules/landing";
-import { navRoute } from "./modules/nav";
+import { nestMenuRoute } from "./modules/nest-menu";
 import { userManagerRoute } from "./modules/user-management";
 
 const routes: RouteObject[] = [
@@ -23,7 +23,7 @@ const routes: RouteObject[] = [
       },
       landingRoute,
       userManagerRoute,
-      navRoute,
+      nestMenuRoute,
       echartsDemoRoute,
     ],
   },

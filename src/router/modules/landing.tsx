@@ -5,4 +5,7 @@ export const landingRoute: RouteObject = {
   lazy: async () => ({
     Component: (await import("@/pages/landing")).default,
   }),
+  handle: {
+    title: "首页",
+  },
 };

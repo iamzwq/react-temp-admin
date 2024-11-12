@@ -6,6 +6,7 @@ export const userManagerRoute: RouteObject = {
     Component: (await import("@/pages/user-management")).default,
   }),
   handle: {
+    title: "用户管理",
     crumb: () => <Link to="/user-management">用户管理</Link>,
   },
 };

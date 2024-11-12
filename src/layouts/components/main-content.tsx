@@ -6,7 +6,7 @@ export default function Content() {
   const matches = useMatches();
   const currRouter = matches.at(-1);
   return (
-    <Layout.Content className="min-h-[calc(100vh-64px)] p-4">
+    <Layout.Content className="min-h-[calc(100vh-64px)] p-4 overflow-hidden">
       <SlideFade key={currRouter!.pathname}>
         <Outlet />
       </SlideFade>
