@@ -1,10 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import { Alert, Card, Divider, Layout, Typography } from "antd";
+import ReactIcon from "@/assets/svg/react.svg?react";
 import { ThemeSwitch } from "@/components/theme-switch";
 import LoginForm from "./components/login-form";
 import ThirdPartyLogin from "./components/third-party-login";
-
-import ReactIcon from "@/assets/svg/react.svg?react";
 
 export default function Login() {
   return (

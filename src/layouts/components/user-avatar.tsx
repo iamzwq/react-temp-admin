@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { LogoutOutlined } from "@ant-design/icons";
 import { Avatar, Dropdown, type MenuProps } from "antd";
+import { ROUTE_PATHS } from "@/constants/common";
 
 export default function UserAvatar() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function UserAvatar() {
         </>
       ),
       onClick: () => {
-        navigate("/login");
+        navigate(ROUTE_PATHS.login);
       },
     },
   ];

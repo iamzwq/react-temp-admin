@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { Button, Result } from "antd";
+import { ROUTE_PATHS } from "@/constants/common";
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function NotFound() {
         title="404"
         subTitle="您访问的页面不存在。"
         extra={
-          <Button type="primary" onClick={() => navigate("/landing")}>
+          <Button type="primary" onClick={() => navigate(ROUTE_PATHS.landing)}>
             返回首页
           </Button>
         }

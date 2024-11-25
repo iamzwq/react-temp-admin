@@ -1,7 +1,8 @@
 import { type RouteObject } from "react-router-dom";
+import { ROUTE_PATHS } from "@/constants/common";
 
 export const landingRoute: RouteObject = {
-  path: "/landing",
+  path: ROUTE_PATHS.landing,
   lazy: async () => ({
     Component: (await import("@/pages/landing")).default,
   }),

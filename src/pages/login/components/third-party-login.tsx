@@ -1,5 +1,4 @@
 import { Tooltip } from "antd";
-
 import AppleBrandSvg from "@/assets/svg/apple-brand.svg?react";
 import GithubBrandSvg from "@/assets/svg/github-brand.svg?react";
 import GoogleBrandSvg from "@/assets/svg/google-brand.svg?react";

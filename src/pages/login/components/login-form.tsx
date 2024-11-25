@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, type FormProps, Input } from "antd";
 import { useLogin } from "../api";
+import { ROUTE_PATHS } from "@/constants/common";
 
 type FieldType = {
   username?: string;
@@ -16,7 +17,7 @@ export default function LoginForm() {
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     if (isPending) return;
     onLogin(values);
-    navigate("/landing");
+    navigate(ROUTE_PATHS.landing);
     setTimeout(() => {
       window.$notification?.success({
         message: "登录成功",

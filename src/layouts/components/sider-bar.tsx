@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BarChartOutlined, HomeOutlined, MenuOutlined, UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, type MenuProps } from "antd";
-import { useTheme } from "@/components/theme-provider";
-import { useSelector, useSettingsStore } from "@/stores";
-
 import ReactIcon from "@/assets/svg/react.svg?react";
+import { useTheme } from "@/components/theme-provider";
+import { ROUTE_PATHS } from "@/constants/common";
+import { useSelector, useSettingsStore } from "@/stores";
 
 // 递归函数，找到匹配的菜单项
 const findSelectedKeys = (items: MenuProps["items"], pathname: string, path: string[] = []) => {
@@ -34,33 +34,33 @@ const findSelectedKeys = (items: MenuProps["items"], pathname: string, path: str
 const items: MenuProps["items"] = [
   {
     icon: <HomeOutlined />,
-    label: <Link to="/landing">首页</Link>,
-    key: "/landing",
+    label: <Link to={ROUTE_PATHS.landing}>首页</Link>,
+    key: ROUTE_PATHS.landing,
   },
   {
     icon: <UserOutlined />,
-    label: <Link to="/user-management">用户管理</Link>,
-    key: "/user-management",
+    label: <Link to={ROUTE_PATHS.userManagement}>用户管理</Link>,
+    key: ROUTE_PATHS.userManagement,
   },
   {
     icon: <MenuOutlined />,
     label: "一级菜单",
-    key: "/nest-menu",
+    key: ROUTE_PATHS.nestMenu,
     children: [
       {
-        key: "/nest-menu/sub-menu-1",
-        label: <Link to="/nest-menu/sub-menu-1">二级菜单-1</Link>,
+        key: ROUTE_PATHS.subMenu1,
+        label: <Link to={ROUTE_PATHS.subMenu1}>二级菜单-1</Link>,
       },
       {
-        key: "/nest-menu/sub-menu-2",
-        label: <Link to="/nest-menu/sub-menu-2">二级菜单-2</Link>,
+        key: ROUTE_PATHS.subMenu2,
+        label: <Link to={ROUTE_PATHS.subMenu2}>二级菜单-2</Link>,
       },
     ],
   },
   {
     icon: <BarChartOutlined />,
-    label: <Link to="/echarts-demo">Echarts Demo</Link>,
-    key: "/echarts-demo",
+    label: <Link to={ROUTE_PATHS.echartsDemo}>Echarts Demo</Link>,
+    key: ROUTE_PATHS.echartsDemo,
   },
 ];
 

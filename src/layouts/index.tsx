@@ -30,8 +30,6 @@ export default function MainLayout() {
     };
   }, []);
 
-  console.log("out  👉: ");
-
   return (
     <>
       <AppHelmet />

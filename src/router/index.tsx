@@ -3,10 +3,11 @@ import { echartsDemoRoute } from "./modules/echarts-demo";
 import { landingRoute } from "./modules/landing";
 import { nestMenuRoute } from "./modules/nest-menu";
 import { userManagerRoute } from "./modules/user-management";
+import { ROUTE_PATHS } from "@/constants/common";
 
 const routes: RouteObject[] = [
   {
-    path: "login",
+    path: ROUTE_PATHS.login,
     lazy: async () => ({
       Component: (await import("@/pages/login")).default,
     }),
@@ -19,7 +20,7 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate replace to="/landing" />,
+        element: <Navigate replace to={ROUTE_PATHS.landing} />,
       },
       landingRoute,
       userManagerRoute,
